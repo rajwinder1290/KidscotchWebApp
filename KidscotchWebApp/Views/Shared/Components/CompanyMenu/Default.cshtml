@@ -1,0 +1,14 @@
+﻿@model List<KidscotchWebApp.Models.ClothCompany>
+<li class="nav-item dropdown">
+    <a class="nav-link  text-dark dropdown-toggle" href="#" id="companyMenu"
+       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Company</a>
+    <div class="dropdown-menu" aria-labelledby="companyMenu">
+        <a class="dropdown-item" asp-area="" asp-controller="Home"
+           asp-action="AllCloth" >All</a>
+        @foreach (var itm in Model)
+        {
+            <a class="dropdown-item" asp-area="" asp-controller="Home"
+               asp-action="ViewClothByCompany" asp-route-id="@itm.ClothCompanyID">@itm.ClothCompanyName</a>
+        }
+    </div>
+</li>

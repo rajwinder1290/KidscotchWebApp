@@ -1,0 +1,27 @@
+﻿@model IEnumerable<KidscotchWebApp.Models.ClothCompany>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section>
+    <img src="~/images/home.jpg" class="img-fluid" />
+</section>
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Welcome To Kid hop Scotch</h1>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.ClothCompanyName</h5>
+                        <a class="btn btn-primary btn-primary" asp-action="ViewClothByCompany" asp-route-id="@item.ClothCompanyID">Discover</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

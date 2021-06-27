@@ -1,0 +1,30 @@
+﻿@model KidscotchWebApp.Models.ClothInfo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mb-3">
+    <div class="text-center">
+        <h1 class="display-4">@Model.Name</h1>
+        <p>Price: $ @Model.ClothPrice</p>
+    </div>
+    <hr />
+    <div class="row mb-3">
+        <div class="col-md-8">
+            <h2>Company Name: @Model.ClothCompany.ClothCompanyName</h2>
+            <h2>Category Name: @Model.ShopCategory.ShopCategoryName</h2>
+            <h2>Size Chart </h2>
+            <p>@Model.SizeChart</p>
+            <h2>Feature </h2>
+            <p>@Model.Feature</p>
+        </div>
+        <div class="card col-md-4">
+            <img class="card-img-top" src="~/cloths/@Model.ClothInfoID@Model.Extension" alt="@Model.Name" style="width:100%">
+        </div>
+    </div>
+
+    <p>
+        <a asp-action="Index" class="btn btn-primary">View All Cloth</a>
+    </p>
+</div>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<KidscotchWebApp.Models.ClothInfo>
+
+@{
+    ViewData["Title"] = "ViewClothByCompany";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">All Cloth of Company: @ViewData["CompanyName"]</h1>
+    </div>
+    <div class="row" style="margin-bottom:50px;">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card w-100">
+                    <center>
+                        <img src="~/cloths/@item.ClothInfoID@item.Extension" alt="" style="width:100%">
+                    </center>
+                    <div class="card-body">
+                        <h5 class="card-text">
+                            @item.Name <br />
+                            @item.ShopCategory.ShopCategoryName
+                        </h5>
+                        <a class="btn btn-primary btn-primary" asp-action="ViewDetails" asp-route-id="@item.ClothInfoID">Explore</a>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿@model KidscotchWebApp.Models.ClothInfo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Cloth Actions</h1>
+        <p>Add Cloth Info</p>
+    </div>
+    <p>
+        <a asp-action="Index" class="btn btn-primary">View All Cloth</a>
+    </p>
+    <hr />
+    <div class="row">
+        <div class="card col-md-4 border-0">
+            <img class="card-img-top img-fluid" src="~/images/save.png" alt="" style="width:100%">
+        </div>
+        <div class="col-md-8">
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ShopCategoryID" class="control-label"></label>
+                    <select asp-for="ShopCategoryID" class="form-control" asp-items="ViewBag.ShopCategoryID"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ClothCompanyID" class="control-label"></label>
+                    <select asp-for="ClothCompanyID" class="form-control" asp-items="ViewBag.ClothCompanyID"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ClothPrice" class="control-label"></label>
+                    <input asp-for="ClothPrice" class="form-control" />
+                    <span asp-validation-for="ClothPrice" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SizeChart" class="control-label"></label>
+                    <input asp-for="SizeChart" class="form-control" />
+                    <span asp-validation-for="SizeChart" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Feature" class="control-label"></label>
+                    <textarea asp-for="Feature" class="form-control"></textarea>
+                    <span asp-validation-for="Feature" class="text-danger"></span>
+                </div>
+                <div class="custom-file mb-3">
+                    <input asp-for="File.FormFile" type="file" class="custom-file-input" id="customFile">
+                    <label asp-for="File.FormFile" class="custom-file-label">Choose Any Image File</label>
+                    <span asp-validation-for="File.FormFile" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save Cloth Details" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+</script>
+    }

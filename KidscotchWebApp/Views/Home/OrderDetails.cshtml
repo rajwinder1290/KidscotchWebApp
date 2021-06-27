@@ -1,0 +1,66 @@
+﻿@model KidscotchWebApp.Models.CartInfo
+
+@{
+    ViewData["Title"] = "OrderDetails";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Order Details</h1>
+    </div>
+    <div class="row">
+        @if (Model == null || Model.CartCartItems == null || Model.CartCartItems.Count == 0)
+        {
+            <div class="col-md-12">
+                <h1>There is No Items in Oder.</h1>
+            </div>
+        }
+        else
+        {
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            Cloth Photo
+                        </th>
+                        <th>
+                            Cloth Name
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            Total Price
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.CartCartItems)
+                    {
+                        <tr>
+                            <td style="width:30%">
+                                <img src="~/cloths/@item.ClothInfo.ClothInfoID@item.ClothInfo.Extension" class="img-fluid" />
+                            </td>
+                            <td>@item.ClothInfo.Name</td>
+                            <td>$ @item.Price</td>
+                            <td>@item.Quantity</td>
+                            <td>$ @item.Total</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="4" align="right">
+                            Grand Total:
+                        </td>
+                        <td>
+                            $ @ViewData["Total"]
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+

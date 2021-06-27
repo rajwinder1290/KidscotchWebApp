@@ -1,0 +1,45 @@
+﻿@model IEnumerable<KidscotchWebApp.Models.ClothCompany>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Cloth Company Actions</h1>
+        <p>View All Cloth Companies</p>
+    </div>
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Add New Cloth Company</a>
+    </p>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClothCompanyName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.About)
+                </th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClothCompanyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.About)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" class="btn btn-info mr-2" asp-route-id="@item.ClothCompanyID">Edit</a>
+                        <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.ClothCompanyID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

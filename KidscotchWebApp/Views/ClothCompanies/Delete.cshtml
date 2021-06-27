@@ -1,0 +1,42 @@
+﻿@model KidscotchWebApp.Models.ClothCompany
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Cloth Company Actions</h1>
+        <p>Delete Cloth Company Details</p>
+    </div>
+    <p>
+        <a asp-action="Index" class="btn btn-primary">View All Cloth Companies</a>
+    </p>
+    <hr />
+    <div class="row">
+        <div class="card col-md-4 border-0">
+            <img class="card-img-top img-fluid" src="~/images/delete.png" alt="" style="width:100%">
+        </div>
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.ClothCompanyName)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.ClothCompanyName)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.About)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.About)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="ClothCompanyID" />
+                <input type="submit" value="Delete" class="btn btn-danger" />
+            </form>
+        </div>
+    </div>
+</div>
